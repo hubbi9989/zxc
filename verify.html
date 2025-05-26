@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Weryfikacja wyposażenia</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #001f3f; /* granat */
+    color: white;
+  }
+  header {
+    background-color: #004080; /* niebieski baner */
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  form {
+    max-width: 600px;
+    margin: 1rem auto 3rem auto;
+    padding: 1rem;
+  }
+  section {
+    margin-bottom: 2rem;
+    border: 1px solid #004080;
+    border-radius: 6px;
+    background-color: #00264d;
+    padding: 1rem;
+  }
+  section > h2 {
+    background-color: #004080;
+    padding: 0.5rem 1rem;
+    margin: -1rem -1rem 1rem -1rem;
+    border-radius: 6px 6px 0 0;
+    font-size: 1.2rem;
+  }
+  label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+  }
+  input[type="text"],
+  input[type="number"],
+  input[type="date"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 0.4rem 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    border: none;
+    font-size: 1rem;
+    background-color: #003366;
+    color: white;
+  }
+  input[type="checkbox"] {
+    margin-right: 0.5rem;
+    transform: scale(1.2);
+  }
+  .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+  }
+  .checkbox-group label {
+    flex: 1 1 45%;
+    font-weight: normal;
+    cursor: pointer;
+  }
+  button {
+    background-color: #004080;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    display: block;
+    margin: 1rem auto 3rem auto;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #0066cc;
+  }
+  /* Responsywność */
+  @media (max-width: 480px) {
+    .checkbox-group label {
+      flex: 1 1 100%;
+    }
+  }
+  .banner-save {
+    background-color: #0074d9;
+    text-align: center;
+    font-weight: bold;
+    padding: 1rem;
+    border-radius: 6px;
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+  }
+</style>
+</head>
+<body>
+<header>Weryfikacja wyposażenia</header>
+
+<form id="equipForm" autocomplete="off">
+
+  <section>
+    <h2>Weryfikacja wyposażenia</h2>
+    <label for="marka">Marka</label>
+    <input type="text" id="marka" name="marka" />
+
+    <label for="model">Model</label>
+    <input type="text" id="model" name="model" />
+
+    <label for="wersja">Wersja</label>
+    <input type="text" id="wersja" name="wersja" />
+
+    <label for="generacja">Generacja</label>
+    <input type="text" id="generacja" name="generacja" />
+
+    <label for="pakietStylistyczny">Dodatkowy pakiet stylistyczny</label>
+    <input type="text" id="pakietStylistyczny" name="pakietStylistyczny" />
+
+    <label for="rodzajPojazdu">Rodzaj pojazdu</label>
+    <select id="rodzajPojazdu" name="rodzajPojazdu">
+      <option value="">-- Wybierz --</option>
+      <option>Osobowe</option>
+      <option>Motocykle</option>
+      <option>Dostawcze</option>
+      <option>Specjalne</option>
+      <option>Przyczepy</option>
+      <option>Kempingowe</option>
+      <option>Ciężarowe</option>
+    </select>
+
+    <label for="typNadwozia">Typ nadwozia</label>
+    <select id="typNadwozia" name="typNadwozia">
+      <option value="">-- Wybierz --</option>
+      <option>Auto małe</option>
+      <option>Auto miejskie</option>
+      <option>Coupe</option>
+      <option>Kabriolet</option>
+      <option>Kombi</option>
+      <option>Hatchback</option>
+      <option>Minivan</option>
+      <option>Sedan</option>
+      <option>SUV</option>
+      <option>Pick-up</option>
+    </select>
+
+    <label for="rodzajPaliwa">Rodzaj paliwa</label>
+    <select id="rodzajPaliwa" name="rodzajPaliwa">
+      <option value="">-- Wybierz --</option>
+      <option>Benzyna</option>
+      <option>Benzyna + LPG</option>
+      <option>CNG</option>
+      <option>Diesel</option>
+      <option>Elekt​ryczny</option>
+      <option>Etanol</option>
+      <option>Hybryda</option>
+      <option>Hybryda PLUG-IN</option>
+      <option>Wodór</option>
+    </select>
+
+    <label for="adBlue">AdBlue</label>
+    <select id="adBlue" name="adBlue">
+      <option value="">-- Wybierz --</option>
+      <option>TAK</option>
+      <option>NIE</option>
+    </select>
+
+    <label for="rokProdukcji">Rok produkcji</label>
+    <input type="number" id="rokProdukcji" name="rokProdukcji" min="1900" max="2099" />
+
+    <label for="vin">VIN</label>
+    <input type="text" id="vin" name="vin" />
+
+    <label for="przebieg">Przebieg (km)</label>
+    <input type="number" id="przebieg" name="przebieg" min="0" />
+
+    <label for="pojemnoscSilnika">Pojemność silnika (cm³)</label>
+    <input type="number" id="pojemnoscSilnika" name="pojemnoscSilnika" min="0" />
+
+    <label for="kodSilnika">Kod silnika</label>
+    <input type="text" id="kodSilnika" name="kodSilnika" />
+
+    <label for="mocSilnikaKM">Moc silnika (KM)</label>
+    <input type="number" id="mocSilnikaKM" name="mocSilnikaKM" min="0" />
+
+    <label for="mocSilnikaKW">Moc silnika (kW)</label>
+    <input type="number" id="mocSilnikaKW" name="mocSilnikaKW" readonly />
+
+    <label for="skrzyniaBiegow">Skrzynia biegów</label>
+    <select id="skrzyniaBiegow" name="skrzyniaBiegow">
+      <option value="">-- Wybierz --</option>
+      <option>Manualna</option>
+      <option>Automatyczna</option>
+      <option>Półautomatyczna</option>
+    </select>
+
+    <label for="naped">Napęd</label>
+    <select id="naped" name="naped">
+      <option value="">-- Wybierz --</option>
+      <option>Przedni</option>
+      <option>Tylny</option>
+      <option>4x4</option>
+      <option>4x4 - dołączany ręcznie</option>
+      <option>4x4 – dołączany automatycznie</option>
+    </select>
+
+    <label for="autoUszkodzone">Auto uszkodzone</label>
+    <select id="autoUszkodzone" name="autoUszkodzone">
+      <option value="">-- Wybierz --</option>
+      <option>TAK</option>
+      <option>NIE</option>
+    </select>
+
+    <label for="pojazdImportowany">Pojazd importowany</label>
+    <select id="pojazdImportowany" name="pojazdImportowany">
+      <option value="">-- Wybierz --</option>
+      <option>TAK</option>
+      <option>NIE</option>
+    </select>
+
+    <label for="nrRejestracyjny">Numer rejestracyjny</label>
+    <input type="text" id="nrRejestracyjny" name="nrRejestracyjny" />
+
+    <label for="dataPierwszejRejestracji">Data pierwszej rejestracji</label>
+    <input type="date" id="dataPierwszejRejestracji" name="dataPierwszejRejestracji" />
+
+    <label for="liczbaDrzwi">Liczba drzwi</label>
+    <input type="number" id="liczbaDrzwi" name="liczbaDrzwi" min="0" />
+
+    <label for="liczbaMiejsc">Liczba miejsc</label>
+    <input type="number" id="liczbaMiejsc" name="liczbaMiejsc" min="0" />
+
+    <label for="liczbaWlascicieli">Liczba właścicieli</label>
+    <input type="number" id="liczbaWlascicieli" name="liczbaWlascicieli" min="0" />
+
+    <label for="iloscKluczykow">Ilość kluczyków</label>
+    <input type="number" id="iloscKluczykow" name="iloscKluczykow" min="0" />
+
+    <label for="autoSerwisowane">Auto serwisowane</label>
+    <select id="autoSerwisowane" name="autoSerwisowane">
+      <option value="">-- Wybierz --</option>
+      <option>TAK</option>
+      <option>NIE</option>
+    </select>
+
+    <label for="krajPochodzenia">Kraj pochodzenia</label>
+    <input type="text" id="krajPochodzenia" name="krajPochodzenia" />
+
+    <label for="autoZarejestrowane">Auto zarejestrowane</label>
+    <select id="autoZarejestrowane" name="autoZarejestrowane">
+      <option value="">-- Wybierz --</option>
+      <option>TAK</option>
+      <option>NIE</option>
+    </select>
+
+    <label for="ubezpieczenieDo">Ubezpieczenie do</label>
+    <input type="date" id="ubezpieczenieDo" name="ubezpieczenieDo" />
+
+    <label for="kolorNadwozia">Kolor nadwozia</label>
+    <input type="text" id="kolorNadwozia" name="kolorNadwozia" />
+
+    <label for="kodLakieru">Kod lakieru</label>
+    <input type="text" id="kodLakieru" name="kodLakieru" />
+
+    <label for="rozmiarKol">Rozmiar kół</label>
+    <input type="text" id="rozmiarKol" name="rozmiarKol" />
+  </section>
+
+  <section>
+    <h2>Sekcja Audio i multimedia</h2>
+    <label for="producentNaglosnienia">Producent nagłośnienia</label>
+    <input type="text" id="producentNaglosnienia" name="producentNaglosnienia" />
+
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="audio[]" value="AUX" /> AUX</label>
+      <label><input type="checkbox" name="audio[]" value="USB" /> USB</label>
+      <label><input type="checkbox" name="audio[]" value="Apple CarPlay" /> Apple CarPlay</label>
+      <label><input type="checkbox" name="audio[]" value="Android Auto" /> Android Auto</label>
+      <label><input type="checkbox" name="audio[]" value="Bluetooth" /> Bluetooth</label>
+      <label><input type="checkbox" name="audio[]" value="Radio" /> Radio</label>
+      <label><input type="checkbox" name="audio[]" value="Radio fabryczne" /> Radio fabryczne</label>
+      <label><input type="checkbox" name="audio[]" value="Subwoofer" /> Subwoofer</label>
+      <label><input type="checkbox" name="audio[]" value="MP3" /> MP3</label>
+      <label><input type="checkbox" name="audio[]" value="CD" /> CD</label>
+      <label><input type="checkbox" name="audio[]" value="Zestaw głośnomówiący" /> Zestaw głośnomówiący</label>
+      <label><input type="checkbox" name="audio[]" value="Ładowanie bezprzewodowe" /> Ładowanie bezprzewodowe</label>
+      <label><input type="checkbox" name="audio[]" value="Nawigacja" /> Nawigacja</label>
+    </div>
+  </section>
+
+  <section>
+    <h2>Sekcja Komfort</h2>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="komfort[]" value="Tapicerka materiałowa" /> Tapicerka materiałowa</label>
+      <label><input type="checkbox" name="komfort[]" value="Tapicerka skórzana" /> Tapicerka skórzana</label>
+      <label><input type="checkbox" name="komfort[]" value="Tapicerka welurowa" /> Tapicerka welurowa</label>
+      <label><input type="checkbox" name="komfort[]" value="Półskóry" /> Półskóry</label>
+      <label><input type="checkbox" name="komfort[]" value="Alcantara" /> Alcantara</label>
+      <label><input type="checkbox" name="komfort[]" value="Fotele wentylowane" /> Fotele wentylowane</label>
+      <label><input type="checkbox" name="komfort[]" value="Fotel kierowcy regulowany elektrycznie" /> Fotel kierowcy regulowany elektrycznie</label>
+      <label><input type="checkbox" name="komfort[]" value="Fotel pasażera regulowany elektrycznie" /> Fotel pasażera regulowany elektrycznie</label>
+      <label><input type="checkbox" name="komfort[]" value="Kolumna kierownicy regulowana elektrycznie" /> Kolumna kierownicy regulowana elektrycznie</label>
+      <label><input type="checkbox" name="komfort[]" value="Podgrzewana kierownica" /> Podgrzewana kierownica</label>
+      <label><input type="checkbox" name="komfort[]" value="Kierownica multifunkcyjna" /> Kierownica multifunkcyjna</label>
+      <label><input type="checkbox" name="komfort[]" value="Łopatki" /> Łopatki</label>
+      <label><input type="checkbox" name="komfort[]" value="Fotele przód podgrzewane" /> Fotele przód podgrzewane</label>
+      <label><input type="checkbox" name="komfort[]" value="Fotele tył podgrzewane" /> Fotele tył podgrzewane</label>
+      <label><input type="checkbox" name="komfort[]" value="Fotele z funkcją masażu" /> Fotele z funkcją masażu</label>
+      <label><input type="checkbox" name="komfort[]" value="Klimatyzacja manualna" /> Klimatyzacja manualna</label>
+      <label><input type="checkbox" name="komfort[]" value="Klimatyzacja automatyczna" /> Klimatyzacja automatyczna</label>
+      <label><input type="checkbox" name="komfort[]" value="Klimatyzacja dwustrefowa" /> Klimatyzacja dwustrefowa</label>
+      <label><input type="checkbox" name="komfort[]" value="Klimatyzacja dla pasażerów z tyłu" /> Klimatyzacja dla pasażerów z tyłu</label>
+      <label><input type="checkbox" name="komfort[]" value="Ogrzewanie postojowe" /> Ogrzewanie postojowe</label>
+      <label><input type="checkbox" name="komfort[]" value="Szyby przednie sterowane elektrycznie" /> Szyby przednie sterowane elektrycznie</label>
+      <label><input type="checkbox" name="komfort[]" value="Szyby tylne sterowane elektrycznie" /> Szyby tylne sterowane elektrycznie</label>
+      <label><input type="checkbox" name="komfort[]" value="Szyba przednia podgrzewana" /> Szyba przednia podgrzewana</label>
+      <label><input type="checkbox" name="komfort[]" value="Dach panoramiczny" /> Dach panoramiczny</label>
+      <label><input type="checkbox" name="komfort[]" value="Dach szklany" /> Dach szklany</label>
+      <label><input type="checkbox" name="komfort[]" value="Dach otwierany elektrycznie" /> Dach otwierany elektrycznie</label>
+      <label><input type="checkbox" name="komfort[]" value="Podgrzewane fotele" /> Podgrzewane fotele</label>
+    </div>
+  </section>
+
+  <section>
+    <h2>Sekcja Bezpieczeństwo i funkcje wspomagające</h2>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="bezpieczenstwo[]" value="ABS" /> ABS</label>
+      <label><input type="checkbox" name="bezpieczenstwo[]" value="ASR" /> ASR</label>
+      <label><input type="checkbox" name="bezpieczenstwo[]" value="ESP" /> ESP</label>
+      <label><input type="checkbox" name="bezpieczenstwo[]" value="EBD" /> EBD</label>
+      <label><input type="checkbox" name="bezpieczenstwo[]" value="Alarm" /> Alarm</label>
+      <label><input type="checkbox" name="bezpieczenstwo[]" value="Immobilizer" /> Immobilizer</label>
+      <label><input type="checkbox" name="bezpieczenstwo[]" value="Centralny zamek" /> Centralny zamek</label>
+      <label><input type="checkbox" name="bezpieczenstwo[]" value="Poduszki powietrzne" /> Poduszki powietrzne</label>
+      <label><input type="checkbox" name="bezpieczenstwo[]" value="Czujniki parkowania" /> Czujniki parkowania</label>
+      <label><input type="checkbox" name="bezpieczenstwo[]" value="Kamera cofania" /> Kamera cofania</label>
+      <label><input type="checkbox" name="bezpieczenstwo[]" value="Systemy monitorowania martwego pola" /> Systemy monitorowania martwego pola</label>
+      <label><input type="checkbox" name="bezpieczenstwo[]" value="Asystent pasa ruchu" /> Asystent pasa ruchu</label>
+      <label><input type="checkbox" name="bezpieczenstwo[]" value="Tempomat adaptacyjny" /> Tempomat adaptacyjny</label>
+      <label><input type="checkbox" name="bezpieczenstwo[]" value="Kontrola trakcji" /> Kontrola trakcji</label>
+    </div>
+  </section>
+
+  <button type="button" id="saveBtn">Zapisz dane</button>
+  <button type="button" id="generateBtn">Generuj HTML</button>
+
+</form>
+
+<div class="banner-save" id="saveStatus" style="display:none;">Dane zapisane pomyślnie!</div>
+
+<script>
+  // Automatyczne przeliczanie KM na kW
+  const mocKMInput = document.getElementById('mocSilnikaKM');
+  const mocKWInput = document.getElementById('mocSilnikaKW');
+
+  mocKMInput.addEventListener('input', () => {
+    const km = parseFloat(mocKMInput.value);
+    if (!isNaN(km)) {
+      // 1 KM = 0.7355 kW
+      const kw = (km * 0.7355).toFixed(2);
+      mocKWInput.value = kw;
+    } else {
+      mocKWInput.value = '';
+    }
+  });
+
+  // Zapis i odczyt do/z localStorage
+  const form = document.getElementById('equipForm');
+  const saveBtn = document.getElementById('saveBtn');
+  const saveStatus = document.getElementById('saveStatus');
+  const generateBtn = document.getElementById('generateBtn');
+
+  function saveFormData() {
+    const data = {};
+    const elements = form.elements;
+    for(let el of elements) {
+      if (el.name) {
+        if (el.type === 'checkbox') {
+          if (!data[el.name]) data[el.name] = [];
+          if(el.checked) data[el.name].push(el.value);
+        } else {
+          data[el.name] = el.value;
+        }
+      }
+    }
+    localStorage.setItem('equipFormData', JSON.stringify(data));
+    saveStatus.style.display = 'block';
+    setTimeout(() => { saveStatus.style.display = 'none'; }, 3000);
+  }
+
+  function loadFormData() {
+    const dataStr = localStorage.getItem('equipFormData');
+    if (!dataStr) return;
+    const data = JSON.parse(dataStr);
+    const elements = form.elements;
+    for(let el of elements) {
+      if (el.name && data[el.name] !== undefined) {
+        if (el.type === 'checkbox') {
+          el.checked = data[el.name].includes(el.value);
+        } else {
+          el.value = data[el.name];
+        }
+      }
+    }
+  }
+
+  saveBtn.addEventListener('click', saveFormData);
+
+  // Generowanie HTML (z polskimi znakami, poprawnie)
+  generateBtn.addEventListener('click', () => {
+    const data = {};
+    const elements = form.elements;
+    for(let el of elements) {
+      if (el.name) {
+        if (el.type === 'checkbox') {
+          if (!data[el.name]) data[el.name] = [];
+          if(el.checked) data[el.name].push(el.value);
+        } else {
+          data[el.name] = el.value;
+        }
+      }
+    }
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    let html = '<div class="verification-report" style="font-family:Arial,sans-serif;background:#001f3f;color:#fff;padding:20px;max-width:600px;margin:auto;border-radius:8px;">';
+    html += `<h1 style="background:#004080;padding:10px;border-radius:6px;">Weryfikacja wyposażenia</h1>`;
+
+    // Dodajemy podstawowe pola
+    const keysToShow = [
+      'marka', 'model', 'wersja', 'generacja', 'pakietStylistyczny',
+      'rodzajPojazdu', 'typNadwozia', 'rodzajPaliwa', 'adBlue', 'rokProdukcji',
+      'vin', 'przebieg', 'pojemnoscSilnika', 'kodSilnika', 'mocSilnikaKM', 'mocSilnikaKW',
+      'skrzyniaBiegow', 'naped', 'autoUszkodzone', 'pojazdImportowany',
+      'nrRejestracyjny', 'dataPierwszejRejestracji', 'liczbaDrzwi', 'liczbaMiejsc',
+      'liczbaWlascicieli', 'iloscKluczykow', 'autoSerwisowane', 'krajPochodzenia',
+      'autoZarejestrowane', 'ubezpieczenieDo', 'kolorNadwozia', 'kodLakieru', 'rozmiarKol'
+    ];
+
+    html += '<h2 style="background:#004080;padding:8px;border-radius:6px;">Podstawowe dane</h2><ul>';
+    for (const key of keysToShow) {
+      if(data[key]) {
+        html += `<li><strong>${escapeHtml(key)}:</strong> ${escapeHtml(data[key])}</li>`;
+      }
+    }
+    html += '</ul>';
+
+    // Audio i multimedia
+    html += '<h2 style="background:#004080;padding:8px;border-radius:6px;">Audio i multimedia</h2>';
+    html += `<p><strong>Producent nagłośnienia:</strong> ${escapeHtml(data.producentNaglosnienia)}</p>`;
+    if (data['audio[]'] && data['audio[]'].length > 0) {
+      html += '<ul>';
+      for(const item of data['audio[]']) {
+        html += `<li>${escapeHtml(item)}</li>`;
+      }
+      html += '</ul>';
+    }
+
+    // Komfort
+    html += '<h2 style="background:#004080;padding:8px;border-radius:6px;">Komfort</h2>';
+    if (data['komfort[]'] && data['komfort[]'].length > 0) {
+      html += '<ul>';
+      for(const item of data['komfort[]']) {
+        html += `<li>${escapeHtml(item)}</li>`;
+      }
+      html += '</ul>';
+    }
+
+    // Bezpieczeństwo i funkcje wspomagające
+    html += '<h2 style="background:#004080;padding:8px;border-radius:6px;">Bezpieczeństwo i funkcje wspomagające</h2>';
+    if (data['bezpieczenstwo[]'] && data['bezpieczenstwo[]'].length > 0) {
+      html += '<ul>';
+      for(const item of data['bezpieczenstwo[]']) {
+        html += `<li>${escapeHtml(item)}</li>`;
+      }
+      html += '</ul>';
+    }
+
+    html += '</div>';
+
+    // Pokaż wynik w nowym oknie
+    const newWindow = window.open('', '_blank');
+    newWindow.document.write(html);
+    newWindow.document.title = 'Raport Weryfikacji';
+    newWindow.document.close();
+  });
+
+  // Wczytaj dane przy starcie
+  loadFormData();
+</script>
+
+</body>
+</html>
